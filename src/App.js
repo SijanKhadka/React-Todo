@@ -1,9 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
  
 import './App.css'
 
-import AddTodo from "./components/AddTodo"
-import Footer from "./components/Footer"
+import Main from "./components/Main"
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -19,7 +18,7 @@ function App() {
   const localUser = localStorage.getItem('user')
   
   function setUser() {
-    user = prompt('enter name');
+    user = prompt('Enter your name');
     if (user){
       localStorage.setItem('user', user)
     } else if (user == null) {
@@ -43,11 +42,12 @@ function App() {
 
   return (
     <div className="app">
-      {/* <input type="text">Enter your name</input> */}
+      {/* <input type="text">Enter your name</input>
       {/* <h1>helo</h1> */}
-      <h1>{`${localUser ? `${localUser}'s`: ''}`} ToDo App</h1>
+      {/* <h1>{`${localUser ? `${localUser}'s`: ''}`} ToDo App</h1>
       <AddTodo tasks={tasks} handleStateChange={handleStateChange}/>
-      <Footer />
+      <Footer />  */}
+      <Main localUser={localUser} tasks={tasks} handleStateChange={handleStateChange}/>
     </div>
   );
 }
